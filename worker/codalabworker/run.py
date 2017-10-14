@@ -458,3 +458,7 @@ class Run(object):
     def _set_finished(self):
         with self._finished_lock:
             self._finished = True
+
+    @property
+    def requested_memory_bytes(self):
+        return self._resources['request_memory'] or float('inf')
