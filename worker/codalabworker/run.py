@@ -461,4 +461,8 @@ class Run(object):
 
     @property
     def requested_memory_bytes(self):
+        """
+        If request_memory is defined, then return that.
+        Otherwise, this run's memory usage does not get checked, so return inf.
+        """
         return self._resources['request_memory'] or float('inf')
