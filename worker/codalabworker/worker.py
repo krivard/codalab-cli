@@ -46,7 +46,6 @@ class Worker(object):
         self._bundle_service = bundle_service
         self._docker = docker
         self._slots = slots
-
         self._state_file = os.path.join(work_dir, self.STATE_FILENAME)
 
         # Dictionary from UUID to Run that keeps track of bundles currently

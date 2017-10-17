@@ -617,7 +617,7 @@ class BundleModel(object):
 
             return True
 
-   def set_offline_bundle(self, bundle):
+    def set_offline_bundle(self, bundle):
        with self.engine.begin() as connection:
            # Check that it still exists.
            row = connection.execute(cl_bundle.select().where(cl_bundle.c.id == bundle.id)).fetchone()
