@@ -174,7 +174,7 @@ class DependencyManager(object):
                     else:
                         # Already downloaded.
                         dependency.add_child(uuid)
-                        return os.path.join(self._work_dir, dependency.path), False
+                        return os.path.join(self._bundles_dir, dependency.path), False
                 else:
                     if parent_path:
                         path = os.path.join(parent_uuid, parent_path)
