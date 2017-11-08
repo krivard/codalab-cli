@@ -551,7 +551,9 @@ nvidia-docker-plugin not available, no GPU support on this worker.
         https://docs.docker.com/engine/api/v1.20/#/attach-to-a-container
         """
         with closing(self._create_connection()) as conn:
-            conn.request('GET', '/containers/%s/logs?stdout=1&stderr=1' % container_id)
+            # Docker API now requires versioned requests
+            uri = '/v1.17/containers/%s/logs?stdout=1&stderr=1&follow=1' % container_id
+            conn.request('GET', uri)
             logs_response = conn.getresponse()
             if logs_response.status == 500:
                 raise DockerException(logs_response.read())
