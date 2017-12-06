@@ -136,7 +136,7 @@ class Worker(object):
 
         container_id = self._docker.run_nvidia_smi('-L', 'nvidia/cuda:8.0-runtime')
         out, err = self._docker.get_logs(container_id)
-        count = len(re.findall('^GPU \d', out))
+        count = len(re.findall('^GPU \d', out, re.MULTILINE))
         self._docker.delete_container(container_id)
         return count
 
